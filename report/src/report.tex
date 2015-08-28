@@ -11,8 +11,25 @@
 \usepackage{caption}
 \usepackage{eurosym}
 \usepackage{pdfpages}  % \includepdf[pages={1}]{myfile.pdf}
-
+\usepackage{titlesec}
+\usepackage[nottoc,notlot,notlof]{tocbibind}
+\usepackage{nth} % allows days formatting. i.e. 1st, 2nd , ..., i-th
+\usepackage[hyphens]{url}
+\usepackage[toc,page]{appendix}
+\usepackage{setspace}
 \usepackage{chngcntr} 
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\titleformat{\chapter}[display]{\normalfont\huge\bfseries}{}{0pt}{\Huge}
+\titlespacing*{\chapter}{0pt}{10pt}{40pt}
+
 
 % many of these configurations are from http://codeinthehole.com/writing/writing-a-thesis-in-latex/ 
 
