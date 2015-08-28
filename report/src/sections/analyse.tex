@@ -1,0 +1,276 @@
+\chapter{Analyse}
+
+The following chapter presents a background research on the technologies
+that can be used for graph exploration without the use of sight and a
+description of the contributions from previous work of the HaptiQ. It
+will first start with a task analysis on graph exploration. This chapter
+aims at giving a wider outlook on the alternatives and additional
+understanding on what characteristics should be considered for graph
+exploration.
+
+\section{Task analysis}\label{task-analysis}
+
+Finding visually impaired people for collaboration with is not an easy
+task. The partnership between IJA and ELIPSE tries to overcome this
+issue, yet many different projects are running at the same time and each
+one of them needs this worthy collaboration. In order to avoid constant
+requests of their presence in the laboratories, ELIPSE has the
+undergoing policy to restrict these requests to the evaluation phase.
+
+This is a major drawback for a user centered development process.
+Nevertheless, I have managed to find alternative sources of information
+in order to acknowledge usability issues for visually impaired people.
+
+\begin{itemize}
+\item
+  A direct contact with Bernard Orniola - one of the permanent members
+  of ELIPSE who happens to be visually impaired. He has provided me with
+  key understanding of this handicap in a day-to-day perspective
+\item
+  My tutor Christophe Jouffrais, who has a long experience in working
+  with visually impaired people and was able to emphasize some aspects
+  he could feel I was missing
+\item
+  My participation in general meetings on larger-scale projects such as
+  AccessiMap has given me insight on how to adapt a development process
+  to the needs of the blind
+\item
+  A direct contact with X, who was doing his master internship in the
+  cognitive science field. He has pointed out the limits of my design
+  when I have exposed it to him
+\item
+  Colleagues who have tried a previous uncomplete version of the HaptiQ.
+  They have warned me about the major issues that they have experienced
+  when testing it.
+\end{itemize}
+
+This variety of intermediaries acted as a proxy for infield
+observatories. Thanks to it, I was able to come up with the following
+task analysis.
+
+Giving a blind exploration using only a haptic device and a trained user
+on the interaction techniques, the task would be decomposed into the
+following steps:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Feeling the device
+\item
+  Moving (depending on a possible strategy) and waiting for a feedback
+\item
+  If there is no tactile feedback, continue moving
+\item
+  If there is a tactile feedback, process to understand what the encoded
+  information is
+\item
+  Given the new piece of information acquired, adapt the strategy of
+  exploration
+\item
+  While exploration is not completed go back to step 2
+\end{enumerate}
+
+These steps may seem fairly simple. Yet they give us some clues on the
+importance of having a recognisable tactile signal during the
+explroation phase.
+
+Another interesting aspect is the fact that an exploration is the result
+of a sum of strategies. We can consider that finding the network is the
+first goal. The next one is to explore all the nodes, which can mean
+following the network as much as possible. A possible solution to
+improve this strategy may involve building tactile signals that would
+naturally suggest strategies and assist the users in their choice.
+
+\section{Related research}\label{related-research}
+
+Making an exhaustive taxonomy would be illusionnary as research related
+to haptics devices has extended its scope and depth over the last twenty
+five years {[}ref needed{]}. This chapter will nevertheless attempt to
+present technologies used as a way to acquire data through graphs and
+maps exploration for the sightless.
+
+This background research is based on the doctoral thesis of
+Thomas\_Pietrzak\_\_ on ``Dissemination of haptics information in a
+multimodal environnement'' and on the master thesis of Simone\_\_ on
+``The HaptiQ: A Haptic Device for Graph Exploration by People with
+Visual Disabilities''.
+
+\subsection{Braille}\label{braille}
+
+Braille is a tactile writing system that has been invented in 1824 and
+then spreaded around the world since. Although it could be used to read
+graphs with series of dots, arrows and bullets, it is intended for text
+reading. The main issue remains the fact that it is difficult to learn.
+Thinking that all blind people would know it is a common misconception.
+
+\subsection{ScreenReaders}\label{screenreaders}
+
+VIP rely heavily on their audition in order to compensate for their
+handicap. This usage would even trigger an ``obstacle perception'' in
+which they would feel object just by hearing sounds {[}95{]}.
+ScreenReaders provides an efficient alternative to access text and many
+are available \footnote{\url{http://alternativeto.net/tag/screen-reader/}
+  (accessed the 19/08/15)}. If only a few screen readers would allow
+navigation tasks as well, like JAWS or VoiceOver, the main issue remains
+the usage of audio as a channel for spatial guidance. VIP are not
+necessarily inclined to use either cardinal points or the four
+directions (up, down, right, left) to orient themselves. That is why map
+exploration through a screen reader would require a constant audio
+feedback. This interaction may provide a useful help for graph
+exploration, yet it cannot be qualified as the most suited. Besides, it
+is preferable to interfer with the audio channel as little as possible
+in order to facilitate the debit of textual information expressed this
+way. In other words, it would be beneficial to fill this channel with
+textual and mainly textual information.
+
+\subsection{Tactile Maps}\label{tactile-maps}
+
+Tactile maps are made of paper heated to form bumps and relief. It thus
+creates shapes, lines and dots. These are popular among visually
+impaired people learning geometry or exploring a map. Even though they
+offer plenty of tactile freedom, it is easier to grasp a general idea of
+the shapes by using the ten fingers. They do not provide further
+interaction unless they are combined with a tabletop such as the
+Multimodal Interactive Maps (MIMs) project {[}6{]}. MIMs is an input
+output system mixing different technolgies. It keeps the possibility of
+a ten fingers exploration, but requires a new printing for each
+visualisation. MIMs fall short of rendering VIPs autonomous: scanning
+and printing would require the help of another person.
+
+\subsection{Machanical actuators}\label{machanical-actuators}
+
+Presented as the technologic equivalency of braille,
+they can dynamically change a matrix of actuators in order to provide information
+which can be a Braille symbol or simple shapes. This matrix can be
+placed on the finger zone of a mouse like the VTP layer {[}ref needed{]}
+or the Tactiball {[}ref needed{]} which implies that the moving hand is
+also receiving the tactile information or it can be separated like the
+Tactos device {[}ref needed{]} but with a smaller matrix. Their lack of
+popularity could result from poor quality software applications, as
+Thomas Pietrzak suggests. Given Jansson study {[}84{]} mouses are not
+compatible with navigation tasks for visually impaired people.
+
+Other displays, like the Brailliant from Humanware {[}link needed{]},
+offer a full range of actuators forming braille letters, but remain
+fairly expensive.
+
+HTP, a precursor of the HaptiQ, deserves particular attention. One of my
+tutors -- Miguel Nacenta, has been involved in the design of this
+input/output device with a single actuator in the center {[}ref
+needed{]}. The purpose of the HTP is to explore other possible
+interactions with tabletops like their further work has suggested {[}ref
+needed{]}. It renders unconventional outputs like friction and softness
+which can be integrated in various applications. Although innovative,
+its usage is supported by visual elements and has not been though threw
+for visually impaired people.
+
+\subsection{Vibrations}\label{vibrations}
+
+Some devices use vibrations in oder to provide feedbacks. Small
+vibro-motors can be attached to a glove which makes the device adapted
+to a hand like the Cybertouch {[}ref needed{]}. They could also be
+integrated on a small surface imitating a matrix of actuators like the
+Optacon {[}ref needed{]}.
+
+Vibrations can be used in a matrix of thin vertical panels trigerring a
+feeling of cavity or bumps when a hand is set on it as in STReSS {[}ref
+needed{]}.
+
+Electrovibration is used in the TeslaTouch and Revel systems {[}ref
+needed, ref needed{]}; it is imitating the sensation of friction and is
+therefore only perceptable when the fingers are in motion.
+
+\subsection{Forcefeedback}\label{forcefeedback}
+
+Forcefeedback has known a famous entry in the gaming field with Joystick
+and Wheels. But their application goes far beyond that. One of the most
+recurrent names is the PHANToM {[}ref needed{]} that forces the point in
+certain directions. Forcefeedback comes in a variety of techniques in
+order to push a single point into a certain direction (articulated arm,
+pantographes, or pneumatics).
+
+Having a single point of contact does not allow users to follow lines
+easily orto understand shapes {[}ref needed{]}. This make Forcefeedback
+unsuitable for our project.
+
+\subsection{Air}\label{air}
+
+Feedbacks can be perceived via air motion. It triggers the same signals
+as with tactile motion thanks to the variety of sensitivy receptors
+{[}88, 101{]}. AIREAL {[}19{]} makes this approach possible and uses a
+motion detector camera as input. Using highly pressured air waves allows
+long distance interaction (10m). Besides, it is scalable and affordable.
+Even though they offer a wide range of angles from which the air is
+pushed, the lack of resolution limits its usage tremendously. Plus,
+AIREAL is presented as an interaction more suited to enhance user
+experience than an input output system than for exploration.
+
+\subsection{No hands involved}\label{no-hands-involved}
+
+(FIGURE: Homonculus sensoriel)
+
+If we were to represent the human body by its touch sensitivy, we would
+end up with a weak figurine with enormous hands, lips and tongue. This
+is maybe why bolder interactions are exploiting the latter with the
+Tongue Display Unit {[}9{]}. This display places a seven by seven grid
+filled with electrodes on the tongue and can be used in a
+no-hands-involved scenario: as for instance a working surgeon. Others
+would use the brow with the Forhead Retina System {[}ref needed{]}.
+
+Although intriguing, both of these displays allow limited interaction
+and are suited for very particular scenarios.
+
+\section{Previous versions}\label{previous-versions}
+
+FIGURE haptiQ evolution, tactons
+
+In 2014, Constan Simone has worked on a first version of HaptiQ at the
+University of St Andrews. His development process was focused on the
+engineering of a device to handle multiple actuators. These actuators
+could therefore have their own language in order to transmit
+information. He has designed multiple cases for the HaptiQ and
+maintaining all the servomotors.
+
+His work on a background research narrowed the disadvantages of other
+haptics solutions. He has also implied that a vector based mechanical
+actuator such as the HaptiQ is unique. His ideas on possible
+applications in order to help math signal representation (like in Figure
+?) are highly valuable.
+
+Even though his design on the caps does not appear in his report, we
+have to give him credit for it. His work on tactons seems promising;
+yet, it is not backed up by any user study. This imposes its
+reconsideration.
+
+Simone has also managed to extend this first version with button and has
+started to work on different possible interactions with pressure.
+
+Finally, he has briefly pointed out the issue of having multiple wires
+running in order to control the servomotors which has led me to prefer
+solutions allowing the device to be as nomad as possible.
+
+\section{Conclusion}\label{conclusion}
+
+Haptics devices demand material and often electronic circuits to be
+build. This results in high costs overall and is often dedicated to a
+specific usage. If our goal is to provide a solution for VIP around the
+world, then we should take into account other aspects such as making it
+easily replicable and allowing applications to be build on top of the
+key interactions like the Haptic Puck Tabletop and the Phantom did. But
+this goal requires various skills and a careful design.
+
+Many alternatives exist, but the same issue remains: we are too focused
+on data represenation than on data meaning. It might be more relevant to
+focus on the general trends than on the exact measurements. Let us
+remember that it is really hard to learn the simple concept of a squared
+angle when one would be deprived of sight. The challenge is there:
+trying to give a natural interaction for the strategies involved in
+exploration and facilitate learning. A way of solving it is to take a
+step back in the representation of information: we are not interested in
+the value of a perticular pixel but its meaning, its purpose. Is it a
+part of an edge? Is it filling a cue point? Or is it just random noise?
+These problems can be solved by giving meaning a perticular point; this
+is why we are focusing only on graphs. They are a scalable and precise
+representation of the key information. Understanding graphs is mastering
+a way to easily acquire conceptual and spatial information. (ref:
+01\_\_)

@@ -4,3 +4,9 @@ docx:
 	killall -9 "Microsoft Word" &
 	pandoc src/$(PART).rst -s -o build/$(filename)
 	open -a "Microsoft Word" build/$(filename)
+
+tex:
+	pandoc src/$(PART).rst -s -o build/$(PART).tex
+
+clean:
+	rm build/*

@@ -1,0 +1,504 @@
+\chapter{Design}
+
+Tactile vector based devices are inexplored in haptics research, our aim
+is to provide some feedback on their usage for graph exploration. Yet,
+the key points are to design a device that is affordable and easily
+reproducible. Our design path also expects to reach the open-source
+community in order to ease further contributions. In this chapter, I
+will present the device and its functionalities and discuss the
+different choices that have been made in order to build a functional
+prototype for our research.
+
+\section{Global design}\label{global-design}
+
+The HaptiQ can be seen as a movable device with tactons to aid graph
+exploration. These tactile feedback are given by actuators on the top of
+the device forming a star shape. They are directly linked to the hands.
+Moving the device is an input data provided by the user, just as if we
+were to move a mouse. This motion is then tracked and processed by a
+software layer that will trigger a certain tactile signal, called
+tacton. The device will lif the actuators up and down according to this
+tacton signal.
+
+This is how the HaptiQ itself works and the software must meet its
+requirements. We can also go beyond these first requirements and provide
+a standard API for interaction to be integrated into the software
+allowing one interaction to be loaded from a list. Such a software
+Although this is the main workflow for the HaptiQ, we do want to be able
+to compare this interaction to other techniques. This is why special
+efforts have been made for the software part that I will detail.
+
+The feelings that the users experienced by using this device -- the
+tactons -- have a direct impact on the usability of the whole system.
+Human Computer Interactions (HCI) skills have been applied in order to
+make sure that the final tactons are suited for the task of graph
+exploration.
+
+Although important, these tactons are supported and limited by the
+hardware. It has required various skills in order to build the case,
+assemble the electronic components and set up every actuator.
+
+Figure x\_ represents the glogal structure of the HaptiQ. We have a
+first agen taking care of tracking, the software, a tacton
+
+\section{Design of the hardware}\label{design-of-the-hardware}
+
+The HaptiQ receives the tacton signal to execute. The tactile sensation
+is coming from a rubbery cap that is being vertically moved by a
+servomotor controlled by an Arduino electronic card. These components
+are placed inside a 3D printed case. This chapter will detail each part
+of this hardware.
+
+\subsection{Actuator element}\label{actuator-element}
+
+An actuator element is made of the following parts:
+
+\begin{itemize}
+\item
+  a cap with a rubbery feeling
+\item
+  a vertical plastic stick that supports the cap
+\item
+  a servormotor that transmits a vertical motion to the plastic stick
+\item
+  a 3D printed servo-holder which offers an appropriate casing for the
+  servomotor
+\end{itemize}
+
+All these elements were brought up by the collaboration of Conte Simone
+and Hoggan Eve. who have previously worked on a first version of the
+HaptiQ. The cap is made from a special material that can be used by a 3D
+printer and this gives a soft, yet elastic feeling. The shape can be
+described as a segment with a height on a top of a triangle. The
+vertical plastic stick enables to move this cap above the servomotor and
+is fixed to it by a small rubber. The vertical servomotor are one of the
+best ratio of small and inexpensive - they cost each \euro{12} and are
+about 2cm in height. The servo-holder is a design made by Eve.
+
+The actuators were hold but not nicely maintened which would lead to
+some pressure to the wires and an uneven tactile sensation on the hands.
+From my point of view, solutions for hardware problems need to be
+revertible as I were dealing with specific servomotors and 3D printed
+objects that can take a lot of time to reprint. I have first tried a
+very basic solution of using bluetack as a way of soft maintener which
+did offer a short run solution. It was still too untight to be
+practical. So I have drilled the servo-holder in order to make a even
+height position for all the servomotors and leaving some space for the
+wires to go through. An elastic rubber band was then placed to avoid
+jiggling movements from them.
+
+In order to be sure the servo holder stick well onto the first layer of
+the case my best option was scratch. It does not damage the objects, it
+is not messy like the glue and it allows adjusting the servo-holder
+under a minute.
+
+(figure of a drilled servo holder)
+
+In order to work, the servomotor needs to be powered and controlled by
+an electronic board.
+
+\subsection{Electronic components}\label{electronic-components}
+
+Arduino is an electronic card that is backed by a huge opensource
+community. This makes the workflow of running programs on it fairly easy
+and highly documented. Because of its flexibility, many other electronic
+firms have built shield or extension components to enhance the
+possibilities or the card. This is the case of the Adafruit card that we
+are using on top of a Arduino Uno. This extra shield allows to easily
+map the circuits of the servomotors to the Arduino card which enables
+their control in the programme.
+
+In order to make the device nomad, two batteries are needed one for the
+Arduino, one for the Adafruit. Yet, the commands could not be received,
+which has led us to add a bluetooth component and turn the HaptiQ into a
+fully wireless device.
+
+\subsection{Case}\label{case}
+
+The case is also a design provided by Eve H as she has preivously worked
+on another version of the HaptiQ. Having it this massive did lead to
+some concerns, but it is actually more impressive than a problem.
+Ideally,
+
+Besides, even though 3D printing is widely spread - the actual process
+of going from zero knowledge to the printing of such pieces can be and
+was time costly. For instance a poorly configured printer took about 30
+hours to print all the mention parts for this device.
+
+Although a new promising design was delivered by Eve, the timing was too
+short for a risk free transfer.
+
+\section{Design of the software}\label{design-of-the-software}
+
+The software is the agent that enables interactions for graph
+exploration. It has been made flexible enough to change the used set of
+tactons on demand. The architecture has also been designed in order to
+facilitate a change of interaction technique, again on demand.
+
+We need a way to evaluate the HaptiQ in order to understand its assets
+and failures in a task of exploration. One way to achieve this is by
+comparing several interaction techniques for the exact same set up. This
+puts a requirement on the software to be able to change interaction
+easily keeping the exact same set-up.
+
+The final and current state of the software has been achieved by an
+iterative exploratory approach and many refactoring. This has led to
+three main threads (Input listener, Graphic User Interface or GUI,
+Interaction executer) communicating through four main components
+(Network, Interaction, Device).
+
+\subsection{Graph component}\label{graph-component}
+
+This component is used as the container of all the geometric logic that
+are involved in graph exploration. More precisely, it contains the
+collection of Nodes and Links that respectively inherit the functions
+for Points and Lines. These collections can be processed by the GUI and
+appear on the screen. An existing libraries that provides functions for
+graphs and network manipulation was considered \footnote{\url{https://networkx.github.io/}}.
+Our needs were too perticular in order to use such an extern ressource
+easily and on the same time, the computation complexity for our need
+remained sufficiently low to be easily done during this internship.
+
+(figure showing up a graph)
+
+\subsection{Interaction component}\label{interaction-component}
+
+A graph exploration requires two things, what is explored - the network,
+and how -the interaction. This component has came late in the
+development process as the first objective was to make the HaptiQ work
+and then enable multiple interaction techniques: which requires more
+thinking and a better outlook. The interaction component makes sure that
+all the derives interactions follows these three basics functionalities:
+
+\begin{itemize}
+\item
+  open: which will verify if the system meets the requirements for this
+  interaction and therefore avoid any error
+\item
+  process: is called by the interaction thread every loop turn; it
+  computes the appropriate output from a given situation and executes it
+\item
+  closed: which would close the remaining process linked to this
+  interction opened during its usage
+\end{itemize}
+
+By such a structure, it was easy to adapt the HaptiQ interaction
+previously made and at the same time offering a standard way of creating
+an interaction technique. Besides, it offers a control over the
+execution time which is necessary for our user study.
+
+During open, this component makes sure that a network is available. For
+more specific interaction like the HaptiQ, it checks the availability of
+the device component. This is how the input is made available during
+process for computation.
+
+Building this interface has turned a first restricted version of the
+software into an evolutive program that can now accept various
+interaction techniques. Future collaboration has been made available by
+this refactoring.
+
+\subsection{Device component}\label{device-component}
+
+The device component is a virtual representation of the HaptiQ. It has
+therefore a position, an orientation and the state of each of the
+actuators. Each actuator is characterized by an angle or a direction -
+like North which would be equivalent to 90°, that is fixed and a level -
+between 0 and 100, that can be changed.
+
+As it is a representation of the device, all the interaction techniques
+that are dealing with the HaptiQ are using this component as the
+reference for the position. More than a representation of the current
+state, it is actually the state in which the HaptiQ should be. Attribute
+like the position are directly depending on the user and can only be
+updated, but it is a security regarding the levels of the actuators. It
+happens that the HaptiQ does not execute the latest tactons and gets
+stucked in an other state which does not match the real situation. Using
+this device component as the reference for the level of each actuator
+makes the system less prone to context errors.
+
+\subsection{Input tracker}\label{input-tracker}
+
+This is the thread that is constantly listening to the information
+regarding the HaptiQ. These information are shared by the TUIO protocol.
+It simply means that the information is formatted in certain rules which
+makes the parsing process easier. The tracker receives a variety of data
+in the form of chains of characters. Because they follow some patterns,
+it is possible to extract the key information which consists of a
+variety of points. These points are then parsed to a handler that
+compute them in order to obtain a center point and an orientation. The
+position and the orientation of the device component are then updated.
+
+Basing the position of our device on the computation of data sent with a
+high debit does lead to some incoherences. This issue has been solved by
+adding on the tracker a checker that allows only valid position.
+
+\subsection{Graphical User Interface}\label{graphical-user-interface}
+
+The GUI or simply called \emph{view} in the program, represents the
+network loaded visually as seen on figure x. It serves as the reference
+for which network and which interaction are being currently in use. A
+new network can be loaded on live, this allows future applications of
+the HaptiQ in which a user could change it himself.
+
+It also includes a special window that acts as a visual representation
+of the tactons currently in use for the device. This has been
+extensively useful during the development phase in which sets of tactons
+were visually tried before any further development. This could be seen
+as the low fidelity prototype format of tactile interactions as it gives
+a genreal hint of how the tacton will react; yet, the lack of sensation
+makes it a very low fidelity.
+
+\subsection{Interaction processor}\label{interaction-processor}
+
+This thread checks which interaction is selected by the view and will
+call the \emph{process} method for that interaction. For each time the
+interaction is changed, this processor will make sure the previous one
+gets closed properly and the new one \emph{open} - as described in the
+interaction component.
+
+\section{Design of the tactons}\label{design-of-the-tactons}
+
+For our device, a tacton is the position of all the actuators for a
+given time or for a short lapse of time. This time would be the
+evolution of the levels until they repeat the pattern - like an
+oscillation. The tacton is the language in which we are communicating
+what is drawn under the pointing device. It could be a node, a link or
+nothing at all - but each one of these situation leads to completely
+different tactil signals and needs to be easily recognisable. One of the
+goal of the internship is to evaluate the usability of each tactons.
+
+In order to establish the most suited sets of tactons, I have proceeded
+by iteration. For each actuator we have a range of height - which allow
+the creation of interesting patterns like oscillations. Now, with eight
+actuators, the possibilities skyrocks. Proceeding by iteration helps to
+narrow the needed characteristics and avoid wasting development time. I
+will explain in the following section the three main stages that have
+guided me towards the current version which is still under testing.
+
+In order to understand how tactons work, we have to explain for which
+contexts they apply. Here are the following states that are considered
+for our tactons:
+
+(figure on node)
+
+(figure on link)
+
+(figure near)
+
+(figure on nothing)
+
+\subsection{First iteration of
+tactons}\label{first-iteration-of-tactons}
+
+My first iteration has proven me the good distinction between static and
+oscillations and that an actuator should guide one graph element. I also
+had to find a way of rapid prototyping a usual `paper design' is not
+possible with tactile signals.
+
+It has been evaluated by walkthrough on a visual feedback the 8th of
+April 2015 \footnote{\url{https://github.com/asiegfried/vegham/tree/v0.1/app}}.
+I have decided to represent visually the state of each actuator - the
+darker, the higher. This has resulted in a relatively low fidelity
+prototype of my set of tactons, yet it is sufficient to observe basic
+usability problems. I have had to find my alternative of low fidelity
+prototyping and this is how the visual representation came up.
+
+Because of the early version of this interaction, links were not
+integrated yet. The tactons to be generated depend on the following
+rules:
+
+\begin{itemize}
+\item
+  near a node, the tacton indicates the closest nodes by up and down
+  oscillations. Actuators moved this way are the two closest angles, so
+  if the node is at 40°, the North (90°) and the East (0°) actuators
+  gets moved.
+\item
+  on a node, the tacton indicates the closest nodes by being fully up.
+  The concerned actuators are the same as previously.
+\end{itemize}
+
+The intention in this set of tactons was to encode as much information
+as possible. By using this perticular set of tactons, one would know
+when he would be near a node because the oscillations would begin; at
+the same time you would still know about nearby nodes. You could easily
+distinguish when you are on a node
+
+That was in theory, while experimenting roughly with my low fidelity
+feedback, the subjects were feeling lost during the whole exploration
+process inspite of me showing where were the ndoes. The following
+interviews have revealed the reasons:
+
+\begin{itemize}
+\item
+  there was far too much information at a giving time
+\item
+  the interactions felt unatural
+\item
+  it was impossible to tell how many nodes were nearby
+\end{itemize}
+
+Although this interaction was highly depreciated, the task of know
+whetether or not we were on a node or not was done accurately. A first
+contribution from this first iteration is the efficient distinction
+provided by static versus oscillation. This characteristic has been
+preserved through the versions. A second one would be the fact that
+having more than one actuator guiding a single node was too complex too
+be easily processed by the user. This aspect has been taken into account
+in the next iterations.
+
+\subsection{Second iteration of
+tactons}\label{second-iteration-of-tactons}
+
+The second iteration has brought me consider simple tactons first and
+high contrast could be one of the most important characteristic I was
+looking for.
+
+Another path was explored from my first iteration, I have tried to find
+simpler tactons that could still provide guidance \footnote{\url{https://github.com/asiegfried/vegham/tree/v0.2/app}}.
+The following rules conern this second iteration:
+
+\begin{itemize}
+\item
+  near a node, the tacton indicates the direction towards it with a
+  certain intensity. Only one actuator is moved for this tacton, it is
+  the one closer to the angle. For instance for a node at 40° it will be
+  just the East (0°) actuator. The intensity is inversly proportional to
+  the distance. The closer, the higher the level would be.
+\item
+  on a node, all the actuators are higher than normal.
+\end{itemize}
+
+This interaction takes into account what has been remarked in the first
+iteration. One actuator is for one node. Oscillation were reserved
+purposely for the links, that have not been integrated to the software
+at that time.
+
+Another walkthrough has been tried on this interaction in order to
+detect usability errors and just in general seeking other ideas. This
+interaction has received several positive feedbacks. The sudden change
+for when the pointer is on node makes the message very clear. The
+growing intensity also indicated well the exploration. The major issue
+remained the fact that these tests were based on visualisation as a
+proxy of what the tactile sensations would be. Obviously these two
+senses cannot be considered equivalent for my tactons; I had then
+reached a limit for my low fidelity prototyping.
+
+Yet, I have understood that simpler is generally better when it comes to
+provide guidance. This aspect has motivated my further interaction. The
+major contribution of this iteration has been the importance to keep a
+clear contrast between the two situations: on node and not on a node.
+Since the major difficulty is to find the network, it must be very clear
+for the user when it is over a node or not. It accentuates a mental
+marker on that very specific zone, it is also reasuring to have such a
+clear and distinct tactile feedback.
+
+\subsection{Final generation of
+tactons}\label{final-generation-of-tactons}
+
+A few other tactons have been developed while waiting the HatpiQ to be
+build. After some hardware issues (that will be presented in
+Implementation), I was able to provide the real sensation of the HaptiQ
+and this was highly valuable in order to seek the features that would
+lead to a suitable tactons.
+
+After several tries through the hardware capacities and my self
+judgment, I came up with a last generation of four sets of tactons. The
+goal was to compare them in a user study and being able to justify the
+most appropriate one for graph exploration. During the first tries out
+of this user study, I had to withdraw two of them as they appeared to be
+completely unusable for the required task. Two of my collaborators, one
+visually impaired one not have experienced the same struggles in using
+some of these tacton sets. Among other issues, the users felt
+overwhelmed with the tactile information - like arriving on a node, all
+the actuators were moving at the same time. And also, it appeared that
+the intensity that felt like an interesting idea in the second
+iteration, turned out to be completely unperceptable in the real
+situation. We can sum up that the main reason why they were not
+efficient is because of their lack of simplicity and consistency. I had
+to remove them in order to focus on the most promising ones.
+
+The two remaining tacton sets are the result of an iterative exploratory
+and are to be compared in a usability study. One can be considered as a
+direct mapping of the underneath situation when the second provides an
+additional guidance.
+
+\subsubsection{Mapping}\label{mapping}
+
+This tacton sets simply encodes into tactile feedbacks what is directly
+underneath the device. It has been narrowed to three very strict rules:
+
+\begin{itemize}
+\item
+  on a node, the actuators which direction corresponds to the direction
+  of a connected node are up, the rest are down.
+\item
+  on a link, the actuators which direction are parallel to the direction
+  of the link are oscillating up and down on an high level, the rest are
+  left down.
+\item
+  on nothing, all the actuators are down.
+\end{itemize}
+
+When moving the device onto a node, some actuators goes from a down
+level to a up level: their is a high contrast between these two tactile
+situations which respects the criteria of a high contrast found during
+the second iteration. We have also made good usage of the duality of
+static versus oscillation as they both encode distinct facets of the
+exploration. Static is for the nodes and emphasize on pausing and maybe
+remembering this perticular point. Whereas, oscillations are for
+travelling between nodes and this constant feedback of the direction to
+go can be seen as an encouragment to proceed.
+
+\subsubsection{Guidance}\label{guidance}
+
+Very close to the previous set of tactons, Guidance offers just one more
+rule in order to help keeping track of the network.
+
+\begin{itemize}
+\item
+  on a node, the actuators which direction corresponds to the direction
+  of a connected node are up, the rest are down.
+\item
+  on a link, the actuators which direction are parallel to the direction
+  of the link are oscillating up and down, the rest are left down.
+\item
+  near a link, the one actuator which direction is the closest to which
+  the link is, oscillates in a low level.
+\item
+  on nothing and near nothing, all the actuators are down.
+\end{itemize}
+
+Just as the Mapping set, this one respects the criteria established
+during the two previous iterations: high contrast and static versus
+oscillation for two different exploration phases. It includes a quick
+guidance that helps user to return quickly on their track. Even though a
+new tacton is used, the help provided can be worth it. The questions
+rised by this alternative are untangled in the Evaluation chapter.
+
+\subsection{Remarks}\label{remarks}
+
+I have not talked about a basic criteria which is to prevent a single
+tacton signal representing two distinct situations. It is the first
+level towards consistency, obviously. As one would notice, the sets have
+been constantly moving towards simplicity and contrast. One can argue
+that providing guidance is obviously more usable, but since the
+beginning of my internship I have been surprised by the difficulty of
+finding the key elements for a good tactile sensation. I have not taken
+this for granted and this is why I felt the user study is justified.
+Besides, providing some analyse feedbacks on the differences of mapping
+versus guidance can surely be seen as a minor contribution in the
+understanding of tactile feedback based on vector for graph exploration.
+We may appreciate the fact that, as an engineer it is easy to see many
+different ways to encode in tactons the underneath situation of a
+pointing device. As challenging as it seems, this approach does not
+consider the usability aspect.
+
+This chapter has described the design of the software, the tactons and
+the hardware. Furthermore, it has detailed the reason of the iteration
+over some of them. We end up having a relatively inexpensive device -
+around \euro{300} and reproductible. The software is opensource and
+using the HaptiQ interactions is cross-platform; it is even designed to
+welcome new interaction techniques for the device or to ease comparison.
+The implementation of this design has lead to some rationale desicions
+as well which will be detail in the Implementation chapter.
