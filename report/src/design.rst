@@ -2,26 +2,26 @@
 
 Design
 ======
-.. Our design should therefore meet the requirements previously stated.
+.. Our design should therefore meet the previously stated requirements.
 
-Tactile vector based devices are uncommon in haptics research, our aim is to provide some feedback on their usage for graph exploration. Yet, the key points are to design a device that is affordable and easily reproductible. Our design path also expects to reach the opensource community in order to ease further contributions.
-In this chapter, I will discuss the different choices that have been made in order to build a functionnal prototype for our research.
+Tactile vector based devices are uncommon in haptics (<<<HaptiQ>>>) research, our aim is to provide some feedback on their usage for graph exploration. Yet, the key points are to design a device that is affordable and easily reproducible. Our design path also expects to reach the open-source community in order to ease further contributions.
+In this chapter, I will discuss the different choices that have been made in order to build a functional prototype for our research.
 
 
 Global design
 -------------
 
-The HaptiQ is an enhanced mouse in which tactile feedbacks helps graph exploration. These feedbacks are giving by actuators on the top of the device forming a star shape and are in contact with the hands. Moving the device is an input data provided by the user, just as if we were to move a mouse. This motion is then tracked and processed by a software layer that will trigger a certain tactile signal, called tacton. The device will move the actuators according to this tacton singal.
+The HaptiQ is an enhanced mouse in which tactile feedbacks aid graph exploration. These feedbacks are given by actuators on the top of the device forming a star shape. They are directly linked to the hands. Moving the device is an input data provided by the user, just as if we were to move a mouse. This motion is then tracked and processed by a software layer that will trigger a certain tactile signal, called tacton. The device will move the actuators according to this tacton signal.
 
 Although this is the main workflow for the HaptiQ, we do want to be able to compare this interaction to other techniques. This is why special efforts have been made for the software part that I will detail.
 
-The feelings that the users experienced by using this device - the tactons, have a direct impact on the usability of the whole system. Human Computer Interactions (HCI) skills have been applied in order to make sure that the final tactons are suited for the task of graph exploration. 
+The feelings that the users experienced by using this device -- the tactons -- have a direct impact on the usability of the whole system. Human Computer Interactions (HCI) skills have been applied in order to make sure that the final tactons are suited for the task of graph exploration. 
 
-Although important, these tactons are supported and limited by the hardware. It has required various skills in order to build the case, assemble the electronic components and set up every actuator. Many collaborators have been involved in this process - and I could not thank them enough.
+Although important, these tactons are supported and limited by the hardware. It has required various skills in order to build the case, assemble the electronic components and set up every actuator. Many collaborators have been involved in this process and I could not thank them enough.
 
 .. TODO: figure representing the global scheme
 
-`Figure x`_ represents the glogal structure of the HaptiQ. We have a first agent that takes care of tracking 
+`Figure x`_ represents the glogal structure of the HaptiQ. We have a first tracking agent 
 
 
 
@@ -29,7 +29,7 @@ Although important, these tactons are supported and limited by the hardware. It 
 Design of the software
 ----------------------
 
-The software is the agent that enables interactions for graph exploration. The application is flexible enough and provide an easy way to change the tacton on demand. The architecture has also been thought in order to facilitate a change of interaction technique, again on demand. This needed flexibility is due to the fact that we are focusing on the usability of the HaptiQ; and this can only be done by comparing it with other interaction techniques. The result is a particular cross-platform software that can be used in various context for graph exploration: for instance it is actually possible to use it with directional keys or by pointing.
+The software is the agent that enables interactions for graph exploration. The application is flexible enough and provides an easy way to change the tacton on demand. The architecture has also been designed in order to facilitate a change of interaction technique, again on demand. Flexibility is needed given that we are focusing on the usability of HaptiQ; and this can only be done by comparing it with other interaction techniques. The result is a particular cross-platform software that can be used in multiple contexts for graph exploration: for instance it is actually possible to use it with directional keys or by pointing.
 
 The final and current state of the software has been achieved by an iterative exploratory approach and many refactoring. This has led to three main threads (Input listener, Graphic User Interface or GUI, Interaction executer) communicating through four main components (Network, Interaction, Device).
 
