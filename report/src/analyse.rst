@@ -19,16 +19,17 @@ This makes the user centered development process not ideal. Nevertheless, I have
 - A direct contact with X. who was doing his master internship in the cognitive science field has been indicating me the limits of my design when exposed and showed to him
 - Colleagues who have tried a previous version of the HaptiQ uncompleted have warned me about the major issues that they have experienced has users
 
- By these proxies, I was able to come up wit the following task analysis.
+By these proxies, I was able to come up wit the following task analysis.
 
- Giving a blind exploration using only a haptic device and a trained user on the interaction techniques, the task would be decomposed into the following steps:
+Giving a blind exploration using only a haptic device and a trained user on the interaction techniques, the task would be decomposed into the following steps:
 
- 1. Feeling the device
- 2. Moving (depending on a strategy if one) and waiting a feedback
- 3. If there is no tactile feedback, continue moving
- 4. If there is a tactile feedback, processing to understand what is the information encoded this way
- 5. Given the new piece of information acquired, adapt the strategy of exploration
- 6. while exploration is not completed go back to step 2
+1. Feeling the device
+2. Moving (depending on a strategy if one) and waiting a feedback
+3. If there is no tactile feedback, continue moving
+4. If there is a tactile feedback, processing to understand what is the information encoded this way
+5. Given the new piece of information acquired, adapt the strategy of exploration
+6. while exploration is not completed go back to step 2
+
  
 These steps may seem fairly simple, it actually gives us some clues on the importance of having a very recognisable tactile signal as it plays immensely during the explroation phase.
 
@@ -100,7 +101,7 @@ Air
 Feedbacks can be perceived via air motion. It triggers the same signals than with tactile thanks to the variety of sensitivy receptors [88, 101]. AIREAL [19] makes this approach possible and uses a motion detector camera as their input. Using highly pressured air wave allows long distance interaction (10m); it is besides scalable and affordable. Even though they offer a wide range of angle from which the air is pushed, the lack of resolution highly limits its usage. Besides, AIREAL is presented more as an interaction in order to enhance user experience than an input output system.
 
 No hands involved
-^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^
 
 (FIGURE: Homonculus sensoriel)
 
