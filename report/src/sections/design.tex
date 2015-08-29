@@ -1,13 +1,8 @@
 \chapter{Design}
 
-Tactile vector based devices are inexplored in haptics research, our aim
-is to provide some feedback on their usage for graph exploration. Yet,
-the key points are to design a device that is affordable and easily
-reproducible. Our design path also expects to reach the open-source
-community in order to ease further contributions. In this chapter, I
-will present the device and its functionalities and discuss the
-different choices that have been made in order to build a functional
-prototype for our research.
+Tactile vector based devices are inexplored in haptics research, our aim is to provide some feedback on their usage for graph exploration. Yet, the key points are to design a device that is affordable and easily reproducible. Our design path also expects to reach the open-source community in order to ease further contributions.
+
+In this chapter, I will present the device and its functionalities and discuss the different choices that have been made in order to build a functional prototype for our research.
 
 \section{Global design}\label{global-design}
 
@@ -38,242 +33,34 @@ Although important, these tactons are supported and limited by the
 hardware. It has required various skills in order to build the case,
 assemble the electronic components and set up every actuator.
 
-Figure x\_ represents the glogal structure of the HaptiQ. We have a
-first agen taking care of tracking, the software, a tacton
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[height=7cm]{figures/haptiq_global.png}
+  \caption{Global representation of the HaptiQ project, we have a system and the user}
+\end{figure}
 
 \section{Design of the hardware}\label{design-of-the-hardware}
 
-The HaptiQ receives the tacton signal to execute. The tactile sensation
-is coming from a rubbery cap that is being vertically moved by a
-servomotor controlled by an Arduino electronic card. These components
-are placed inside a 3D printed case. This chapter will detail each part
-of this hardware.
+\subsection{Case}\label{case}
+
+The HaptiQ receives the tacton signal to execute. It requires an electronic card connected to the servomotors. In order to be able to move around all this equipement a case is needed and it has to be big enough to encompass everything inside. The first design suggested by Hoggan Eve in Figure TODO made possible to fit everything inside. 
+
+The massive size has actually raised some concerns, but the size aspect is mainly a question of convenience. A second version of the case has been designed by Eve, but the timing was too short in order to guarantee a risk free transfer which was really unfortunate.
+
+\subsection{Electronic components}
+
+The purpose of the HaptiQ is at first, to lift actuators up and down. Although it may seem sufficient, we have faced the possibility to add other interactions like a central button and further interaction like a piezo that plays sounds or vibration. These extra features could be of great value if mixed intelligently with the tactons and it would not have been missing the point to make some time to have them. But our first goal was to understand the tactons, not necessarily use them already and this is why we have decided to leave the button and the vibrations for a later version.
 
 \subsection{Actuator element}\label{actuator-element}
 
-An actuator element is made of the following parts:
+They were two ways of seeing the amount of required elements problem. On one way, it would have taken less time to build a device with four actutors instead of eight and limiting the amount of actuators could have meant to actually increase the efficiency of understanding the activated tacton. On the other hand, we reduce by two the amount of information we can provide when on a node. Besides, we wanted a device that would allow to easily navigate from nodes to nodes and rarely the graphs are fully based on squared angles. Finally, the previous work Simone has done made us prefer this path of development.
 
-\begin{itemize}
-\item
-  a cap with a rubbery feeling
-\item
-  a vertical plastic stick that supports the cap
-\item
-  a servormotor that transmits a vertical motion to the plastic stick
-\item
-  a 3D printed servo-holder which offers an appropriate casing for the
-  servomotor
-\end{itemize}
+\section{Software Design}
 
-All these elements were brought up by the collaboration of Conte Simone
-and Hoggan Eve. who have previously worked on a first version of the
-HaptiQ. The cap is made from a special material that can be used by a 3D
-printer and this gives a soft, yet elastic feeling. The shape can be
-described as a segment with a height on a top of a triangle. The
-vertical plastic stick enables to move this cap above the servomotor and
-is fixed to it by a small rubber. The vertical servomotor are one of the
-best ratio of small and inexpensive - they cost each \euro{12} and are
-about 2cm in height. The servo-holder is a design made by Eve.
+The first version of the application was made with the purpose of building easily tactons (see annexe 1). When the project reached a point when tactons were facing minor from an iteration to another and when I have had to be able to switch interactions easily, I have decided to refactor the first version into a second one that would be far more flexible.
 
-The actuators were hold but not nicely maintened which would lead to
-some pressure to the wires and an uneven tactile sensation on the hands.
-From my point of view, solutions for hardware problems need to be
-revertible as I were dealing with specific servomotors and 3D printed
-objects that can take a lot of time to reprint. I have first tried a
-very basic solution of using bluetack as a way of soft maintener which
-did offer a short run solution. It was still too untight to be
-practical. So I have drilled the servo-holder in order to make a even
-height position for all the servomotors and leaving some space for the
-wires to go through. An elastic rubber band was then placed to avoid
-jiggling movements from them.
-
-In order to be sure the servo holder stick well onto the first layer of
-the case my best option was scratch. It does not damage the objects, it
-is not messy like the glue and it allows adjusting the servo-holder
-under a minute.
-
-(figure of a drilled servo holder)
-
-In order to work, the servomotor needs to be powered and controlled by
-an electronic board.
-
-\subsection{Electronic components}\label{electronic-components}
-
-Arduino is an electronic card that is backed by a huge opensource
-community. This makes the workflow of running programs on it fairly easy
-and highly documented. Because of its flexibility, many other electronic
-firms have built shield or extension components to enhance the
-possibilities or the card. This is the case of the Adafruit card that we
-are using on top of a Arduino Uno. This extra shield allows to easily
-map the circuits of the servomotors to the Arduino card which enables
-their control in the programme.
-
-In order to make the device nomad, two batteries are needed one for the
-Arduino, one for the Adafruit. Yet, the commands could not be received,
-which has led us to add a bluetooth component and turn the HaptiQ into a
-fully wireless device.
-
-\subsection{Case}\label{case}
-
-The case is also a design provided by Eve H as she has preivously worked
-on another version of the HaptiQ. Having it this massive did lead to
-some concerns, but it is actually more impressive than a problem.
-Ideally,
-
-Besides, even though 3D printing is widely spread - the actual process
-of going from zero knowledge to the printing of such pieces can be and
-was time costly. For instance a poorly configured printer took about 30
-hours to print all the mention parts for this device.
-
-Although a new promising design was delivered by Eve, the timing was too
-short for a risk free transfer.
-
-\section{Design of the software}\label{design-of-the-software}
-
-The software is the agent that enables interactions for graph
-exploration. It has been made flexible enough to change the used set of
-tactons on demand. The architecture has also been designed in order to
-facilitate a change of interaction technique, again on demand.
-
-We need a way to evaluate the HaptiQ in order to understand its assets
-and failures in a task of exploration. One way to achieve this is by
-comparing several interaction techniques for the exact same set up. This
-puts a requirement on the software to be able to change interaction
-easily keeping the exact same set-up.
-
-The final and current state of the software has been achieved by an
-iterative exploratory approach and many refactoring. This has led to
-three main threads (Input listener, Graphic User Interface or GUI,
-Interaction executer) communicating through four main components
-(Network, Interaction, Device).
-
-\subsection{Graph component}\label{graph-component}
-
-This component is used as the container of all the geometric logic that
-are involved in graph exploration. More precisely, it contains the
-collection of Nodes and Links that respectively inherit the functions
-for Points and Lines. These collections can be processed by the GUI and
-appear on the screen. An existing libraries that provides functions for
-graphs and network manipulation was considered \footnote{\url{https://networkx.github.io/}}.
-Our needs were too perticular in order to use such an extern ressource
-easily and on the same time, the computation complexity for our need
-remained sufficiently low to be easily done during this internship.
-
-(figure showing up a graph)
-
-\subsection{Interaction component}\label{interaction-component}
-
-A graph exploration requires two things, what is explored - the network,
-and how -the interaction. This component has came late in the
-development process as the first objective was to make the HaptiQ work
-and then enable multiple interaction techniques: which requires more
-thinking and a better outlook. The interaction component makes sure that
-all the derives interactions follows these three basics functionalities:
-
-\begin{itemize}
-\item
-  open: which will verify if the system meets the requirements for this
-  interaction and therefore avoid any error
-\item
-  process: is called by the interaction thread every loop turn; it
-  computes the appropriate output from a given situation and executes it
-\item
-  closed: which would close the remaining process linked to this
-  interction opened during its usage
-\end{itemize}
-
-By such a structure, it was easy to adapt the HaptiQ interaction
-previously made and at the same time offering a standard way of creating
-an interaction technique. Besides, it offers a control over the
-execution time which is necessary for our user study.
-
-During open, this component makes sure that a network is available. For
-more specific interaction like the HaptiQ, it checks the availability of
-the device component. This is how the input is made available during
-process for computation.
-
-Building this interface has turned a first restricted version of the
-software into an evolutive program that can now accept various
-interaction techniques. Future collaboration has been made available by
-this refactoring.
-
-\subsection{Device component}\label{device-component}
-
-The device component is a virtual representation of the HaptiQ. It has
-therefore a position, an orientation and the state of each of the
-actuators. Each actuator is characterized by an angle or a direction -
-like North which would be equivalent to 90°, that is fixed and a level -
-between 0 and 100, that can be changed.
-
-As it is a representation of the device, all the interaction techniques
-that are dealing with the HaptiQ are using this component as the
-reference for the position. More than a representation of the current
-state, it is actually the state in which the HaptiQ should be. Attribute
-like the position are directly depending on the user and can only be
-updated, but it is a security regarding the levels of the actuators. It
-happens that the HaptiQ does not execute the latest tactons and gets
-stucked in an other state which does not match the real situation. Using
-this device component as the reference for the level of each actuator
-makes the system less prone to context errors.
-
-\subsection{Input tracker}\label{input-tracker}
-
-This is the thread that is constantly listening to the information
-regarding the HaptiQ. These information are shared by the TUIO protocol.
-It simply means that the information is formatted in certain rules which
-makes the parsing process easier. The tracker receives a variety of data
-in the form of chains of characters. Because they follow some patterns,
-it is possible to extract the key information which consists of a
-variety of points. These points are then parsed to a handler that
-compute them in order to obtain a center point and an orientation. The
-position and the orientation of the device component are then updated.
-
-Basing the position of our device on the computation of data sent with a
-high debit does lead to some incoherences. This issue has been solved by
-adding on the tracker a checker that allows only valid position.
-
-\subsection{Graphical User Interface}\label{graphical-user-interface}
-
-The GUI or simply called \emph{view} in the program, represents the
-network loaded visually as seen on figure x. It serves as the reference
-for which network and which interaction are being currently in use. A
-new network can be loaded on live, this allows future applications of
-the HaptiQ in which a user could change it himself.
-
-It also includes a special window that acts as a visual representation
-of the tactons currently in use for the device. This has been
-extensively useful during the development phase in which sets of tactons
-were visually tried before any further development. This could be seen
-as the low fidelity prototype format of tactile interactions as it gives
-a genreal hint of how the tacton will react; yet, the lack of sensation
-makes it a very low fidelity.
-
-\subsection{Interaction processor}\label{interaction-processor}
-
-This thread checks which interaction is selected by the view and will
-call the \emph{process} method for that interaction. For each time the
-interaction is changed, this processor will make sure the previous one
-gets closed properly and the new one \emph{open} - as described in the
-interaction component.
-
-\section{Design of the tactons}\label{design-of-the-tactons}
-
-For our device, a tacton is the position of all the actuators for a
-given time or for a short lapse of time. This time would be the
-evolution of the levels until they repeat the pattern - like an
-oscillation. The tacton is the language in which we are communicating
-what is drawn under the pointing device. It could be a node, a link or
-nothing at all - but each one of these situation leads to completely
-different tactil signals and needs to be easily recognisable. One of the
-goal of the internship is to evaluate the usability of each tactons.
-
-In order to establish the most suited sets of tactons, I have proceeded
-by iteration. For each actuator we have a range of height - which allow
-the creation of interesting patterns like oscillations. Now, with eight
-actuators, the possibilities skyrocks. Proceeding by iteration helps to
-narrow the needed characteristics and avoid wasting development time. I
-will explain in the following section the three main stages that have
-guided me towards the current version which is still under testing.
+\subsection{First iteration of
+tactons}\label{first-iteration-of-tactons}
 
 In order to understand how tactons work, we have to explain for which
 contexts they apply. Here are the following states that are considered
@@ -286,9 +73,6 @@ for our tactons:
 (figure near)
 
 (figure on nothing)
-
-\subsection{First iteration of
-tactons}\label{first-iteration-of-tactons}
 
 My first iteration has proven me the good distinction between static and
 oscillations and that an actuator should guide one graph element. I also
