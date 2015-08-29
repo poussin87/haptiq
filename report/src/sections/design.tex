@@ -1,10 +1,10 @@
 \chapter{Design}
 
-Tactile vector based devices are inexplored in haptics research, our aim is to provide some feedback on their usage for graph exploration. Yet, the key points are to design a device that is affordable and easily reproducible. Our design path also expects to reach the open-source community in order to ease further contributions.
+Tactile vector based devices are inexplored in haptics research, our aim is to provide some feedback on their usage for graph exploration. Yet, the key point is to design a device that is affordable and easily reproducible. Our design path also expects to reach the open-source community in order to ease further contributions.
 
 In this chapter, I will present the device and its functionalities and discuss the different choices that have been made in order to build a functional prototype for our research.
 
-\section{Global design}\label{global-design}
+\section{General design}\label{global-design}
 
 The HaptiQ can be seen as a movable device with tactons to aid graph
 exploration. These tactile feedback are given by actuators on the top of
@@ -30,8 +30,7 @@ make sure that the final tactons are suited for the task of graph
 exploration.
 
 Although important, these tactons are supported and limited by the
-hardware. It has required various skills in order to build the case,
-assemble the electronic components and set up every actuator.
+hardware.
 
 \begin{figure}[!ht]
   \centering
@@ -39,7 +38,7 @@ assemble the electronic components and set up every actuator.
   \caption{Global representation of the HaptiQ project, we have a system and the user}
 \end{figure}
 
-\section{Design of the hardware}\label{design-of-the-hardware}
+\section{Hardware}\label{design-of-the-hardware}
 
 \subsection{Case}\label{case}
 
@@ -55,9 +54,13 @@ The purpose of the HaptiQ is at first, to lift actuators up and down. Although i
 
 They were two ways of seeing the amount of required elements problem. On one way, it would have taken less time to build a device with four actutors instead of eight and limiting the amount of actuators could have meant to actually increase the efficiency of understanding the activated tacton. On the other hand, we reduce by two the amount of information we can provide when on a node. Besides, we wanted a device that would allow to easily navigate from nodes to nodes and rarely the graphs are fully based on squared angles. Finally, the previous work Simone has done made us prefer this path of development.
 
-\section{Software Design}
+\section{Software}
 
-The first version of the application was made with the purpose of building easily tactons (see annexe 1). When the project reached a point when tactons were facing minor from an iteration to another and when I have had to be able to switch interactions easily, I have decided to refactor the first version into a second one that would be far more flexible.
+The first version of the application was made with the purpose of building easily tactons (see annexe 1). When the project reached a point where tactons had only minor changes from an iteration to another, I have updated the software.
+
+The second version was intented to be more flexible. The main idea was to provide a software for which most of the parts are easily replacable. This typically has led to a usage of multiple threads. One was to render visually the network, the position and the current tactons; it is called the view. Another provides a position from a communication protocol (TUIO), if we were to replace the source providing the position no change is needed in the software. If we were to change the way we render the position, then only this thread needs to be updated. A last thread handles the execution of the current interaction, for the HaptiQ the interaction is to generate the appropriate tacton and to tell the device to execute it - but other interactions can be used and their executing would have other output. Having this thread executing the current interaction makes it easily adapted for these other interactions. It is also from this second version that I have adapted the code to be cross-platform and added a quick installation guide. This was a way to meet a first basic requirement for a hypothetic larger scale usage.
+
+\section{Tactons}
 
 \subsection{First iteration of
 tactons}\label{first-iteration-of-tactons}
@@ -79,16 +82,17 @@ oscillations and that an actuator should guide one graph element. I also
 had to find a way of rapid prototyping a usual `paper design' is not
 possible with tactile signals.
 
-It has been evaluated by walkthrough on a visual feedback the 8th of
-April 2015 \footnote{\url{https://github.com/asiegfried/vegham/tree/v0.1/app}}.
-I have decided to represent visually the state of each actuator - the
+The possibilities are incredibly wide and any of the ideas I could come up with would have a theory justification. I wanted to have in-use observations as soon as I was able to produce tactons from the software. This first iteration has been evaluated by walkthrough on a visual feedback the 8th of
+April 2015 \footnote{\url{https://github.com/asiegfried/vegham/tree/v0.1/app}}. Three participants were asked to find the nodes without being explained the tactons. After some wondering, they were then told how they worked and asked to retry the exploration. I have then invited them to talk about these tactons and encouraged new ideas. They have actually found the nodes by chance, because the oscillation stoped and not because they felt guided towards nodes.
+
+To allow my participants to receive the tacton information, I have decided to represent visually the state of each actuator as shown in Figure FIGURE - the
 darker, the higher. This has resulted in a relatively low fidelity
 prototype of my set of tactons, yet it is sufficient to observe basic
 usability problems. I have had to find my alternative of low fidelity
-prototyping and this is how the visual representation came up.
+prototyping and this is how the visual representation has been endorsed.
 
 Because of the early version of this interaction, links were not
-integrated yet. The tactons to be generated depend on the following
+integrated yet. The tactons to be generated depended on the following
 rules:
 
 \begin{itemize}
@@ -140,7 +144,7 @@ looking for.
 
 Another path was explored from my first iteration, I have tried to find
 simpler tactons that could still provide guidance \footnote{\url{https://github.com/asiegfried/vegham/tree/v0.2/app}}.
-The following rules conern this second iteration:
+The following rules concern this second iteration:
 
 \begin{itemize}
 \item
@@ -159,8 +163,8 @@ purposely for the links, that have not been integrated to the software
 at that time.
 
 Another walkthrough has been tried on this interaction in order to
-detect usability errors and just in general seeking other ideas. This
-interaction has received several positive feedbacks. The sudden change
+detect usability errors and just in general seeking other ideas. Three participants were asked to find the nodes and to then redraw them on a paper.
+This interaction has received several positive feedbacks. The sudden change
 for when the pointer is on node makes the message very clear. The
 growing intensity also indicated well the exploration. The major issue
 remained the fact that these tests were based on visualisation as a
@@ -262,9 +266,7 @@ rised by this alternative are untangled in the Evaluation chapter.
 
 \subsection{Remarks}\label{remarks}
 
-I have not talked about a basic criteria which is to prevent a single
-tacton signal representing two distinct situations. It is the first
-level towards consistency, obviously. As one would notice, the sets have
+As one would notice, the sets have
 been constantly moving towards simplicity and contrast. One can argue
 that providing guidance is obviously more usable, but since the
 beginning of my internship I have been surprised by the difficulty of

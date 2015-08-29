@@ -1,5 +1,4 @@
-\documentclass[a4paper, 12
-pt, oneside]{report}
+\documentclass[a4paper, 11pt, oneside]{report}
 
 \usepackage[english]{babel}
 \usepackage[utf8x]{inputenc}
@@ -42,11 +41,10 @@ pt, oneside]{report}
 	\include{sections/abstract}
 	\include{sections/acknowledgment}
 
+	\setlength{\parskip}{0em}
 	\tableofcontents
-	\newpage
-
 	\listoffigures
-	\newpage
+	\setlength{\parskip}{1em}
 
 	\include{sections/introduction}
 	% \include{sections/glossary}
