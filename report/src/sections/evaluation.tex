@@ -163,25 +163,44 @@ tactons.
 
 We have several indicators going towards a clear preference for the G
 which conforts our intuition. Still, the lack of effectiveness raises
-questions. subjects, results (show some graphs), explain about parsing
+questions. As for the efficiency, statiscal analysis are still run in order to answer our hypothesis.
 
 \section{User study B: about graph
 exploration}\label{user-study-b-about-graph-exploration}
 
+A second user study is being currently planned. We were looking for the preferred set of tactons in the previous study, but this does not provide information for a real usage of the HaptiQ in graph exploration. We would like to know how does the HaptiQ compete with a simple poiting interaction where a voice describes what is under the finder and a with a keyboard to quickly move from a node to another with audio feedback.
 
-% HaptiQ, Guide, Keyboard
+Both of these interactions have been implemented and integrated to the software. I have tried to come up with an exploration task that does not focus on the overall understanding of a graph but on more specific task as suggested by a study on aesthetics [ref needed]. During prelimary tests I have understood the complexity of these three tasks on complexe graphs:
 
+\begin{enumerate}
+  \item What is the minimum amount of nodes between two given nodes?
+  \item What is the minimum amount of nodes to suppress for disconnecting two given nodes?
+  \item What is the minimum amount of connections to suppress for disconnecting two given nodes?
+\end{enumerate}
 
-The user study is still in try-out as this report is written: the
-current state
+The complexity that would make these tasks feasible and still challenging are about seven nodes with eight connections. The problem is that questions 2 and 3 are really similar to each other in such graphs, and there is a cheat technique consisting of looking for the connections between the two nodes - the answer would be the minimum for a majority of cases.
 
-About interaction technique
+In order to still benefit from these well thought questions, my supervisor suggested to replace one with a more spatial oriented one. As for the cheat, it is easy to introduce graphs that do go against the cheat.
 
-Hypothesis
+For the moment, the procedure consists in the following directives.
 
-\section{Hypothesis}\label{hypothesis-1}
+The subjects will be told about the purpose of the experiment and a description on the three interaction techniques. They will then for each interaction have a training period on a relatively simple graph. For each interaction technique, they will have to find the answers for the following questions:
 
-\section{Protocols desgin}\label{protocols-desgin}
+\begin{enumerate}
+  \item The minimum amount of nodes between X and Y
+  \item The minimum amount of nodes to suppress for disconnecting X and Y
+  \item The two nodes farther in South, West, North or East
+\end{enumerate}
 
-\section{Results}\label{results-1}
+For each task, a new network is loaded to avoid biais from knowledge of previous task. Each network would have its own series of task. 
+
+After each block tested interaction, the subject are asked to fill a NASA-TLX questionnaire - which may provide more detail than the SUS one.
+
+When the three interactions have been tested, the subject would order them in terms of:
+
+\begin{itemize}
+  \item Satisfaction
+  \item Easiness
+  \item Accuracy
+\end{itemize}
 
