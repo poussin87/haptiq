@@ -35,7 +35,7 @@ in order to acknowledge usability issues for visually impaired people.
   AccessiMap has given me insight on how to adapt a development process
   to the needs of the blind
 \item
-  A direct contact with X, who was doing his master internship in the
+  A direct contact with Ennadif Mustapha, who was doing his master internship in the
   cognitive science field. He has pointed out the limits of my design
   when I have exposed it to him
 \item
@@ -70,7 +70,7 @@ following steps:
   While exploration is not completed go back to step 2
 \end{enumerate}
 
-These steps may seem fairly simple. Yet they give us some clues on the
+These steps may seem fairly simple, yet they give us some clues on the
 importance of having a recognisable tactile signal during the
 explroation phase.
 
@@ -79,21 +79,20 @@ of a sum of strategies. We can consider that finding the network is the
 first goal. The next one is to explore all the nodes, which can mean
 following the network as much as possible. A possible solution to
 improve this strategy may involve building tactile signals that would
-naturally suggest strategies and assist the users in their choice.
+naturally suggest strategies and assist the users in their choices.
 
 \section{Related research}\label{related-research}
 
 Making an exhaustive taxonomy would be illusionnary as research related
 to haptics devices has extended its scope and depth over the last twenty
-five years {[}ref needed{]}. This chapter will nevertheless attempt to
-present technologies used as a way to acquire data through graphs and
-maps exploration for the sightless.
+five years \cite{roberts2007we}. This chapter will nevertheless attempt to
+present technologies that could be used as a way to acquire data through graphs or
+maps for the sightless.
 
 This background research is based on the doctoral thesis of
-Thomas\_Pietrzak\_\_ on ``Dissemination of haptics information in a
-multimodal environnement'' and on the master thesis of Simone\_\_ on
-``The HaptiQ: A Haptic Device for Graph Exploration by People with
-Visual Disabilities''.
+Thomas Pietrzak on ``Dissemination of haptics information in a
+multimodal environnement'' \cite{pietrzak:tel-00390057} and on the master thesis of Conte Simone on
+``The HaptiQ: A Haptic Device for Graph Exploration by People with Visual Disabilities''.
 
 \subsection{Braille}\label{braille}
 
@@ -107,11 +106,11 @@ Thinking that all blind people would know it is a common misconception.
 
 VIP rely heavily on their audition in order to compensate for their
 handicap. This usage would even trigger an ``obstacle perception'' in
-which they would feel object just by hearing sounds {[}95{]}.
+which they would feel object just by hearing sounds \cite{levesqueblindness}.
 ScreenReaders provides an efficient alternative to access text and many
 are available \footnote{\url{http://alternativeto.net/tag/screen-reader/}
   (accessed the 19/08/15)}. If only a few screen readers would allow
-navigation tasks as well, like JAWS or VoiceOver, the main issue remains
+navigation tasks as well, like JAWS\cite{JAWS} or VoiceOver\cite{voiceOver}, the main issue remains
 the usage of audio as a channel for spatial guidance. VIP are not
 necessarily inclined to use either cardinal points or the four
 directions (up, down, right, left) to orient themselves. That is why map
@@ -123,6 +122,19 @@ in order to facilitate the debit of textual information expressed this
 way. In other words, it would be beneficial to fill this channel with
 textual and mainly textual information.
 
+	\begin{figure}[!ht]
+		\begin{minipage}[c]{.46\linewidth}
+			\centering
+			\includegraphics[width=4cm]{figures/voice_over.jpg}
+			\caption{Voiceover icon, the screen reader made by Apple}
+  		\end{minipage} \hfill
+  		\begin{minipage}[c]{.46\linewidth}
+  			\centering
+			\includegraphics[width=6cm]{figures/jaws.png}
+			\caption{Jaws, the screen reader made by Windows}
+		\end{minipage}
+	\end{figure}
+
 \subsection{Tactile Maps}\label{tactile-maps}
 
 Tactile maps are made of paper heated to form bumps and relief. It thus
@@ -131,98 +143,193 @@ impaired people learning geometry or exploring a map. Even though they
 offer plenty of tactile freedom, it is easier to grasp a general idea of
 the shapes by using the ten fingers. They do not provide further
 interaction unless they are combined with a tabletop such as the
-Multimodal Interactive Maps (MIMs) project {[}6{]}. MIMs is an input
+Multimodal Interactive Maps (MIMs) project \cite{brock2010usage}. MIMs is an input
 output system mixing different technolgies. It keeps the possibility of
 a ten fingers exploration, but requires a new printing for each
 visualisation. MIMs fall short of rendering VIPs autonomous: scanning
 and printing would require the help of another person.
+
+	\begin{figure}[!ht]
+		\centering
+		\includegraphics[height=5cm]{figures/mims.png}
+		\caption{A MIM prototype in use}
+	\end{figure}
+
 
 \subsection{Machanical actuators}\label{machanical-actuators}
 
 Presented as the technologic equivalency of braille,
 they can dynamically change a matrix of actuators in order to provide information
 which can be a Braille symbol or simple shapes. This matrix can be
-placed on the finger zone of a mouse like the VTP layer {[}ref needed{]}
-or the Tactiball {[}ref needed{]} which implies that the moving hand is
+placed on the finger zone of a mouse like the VTPlayer
+or the Tactiball \cite{Lecolinet:2005:TOC:1148550.1148583} which implies that the moving hand is
 also receiving the tactile information or it can be separated like the
-Tactos device {[}ref needed{]} but with a smaller matrix. Their lack of
+Tactos device \cite{hanneton1998dynamique} but with a smaller matrix. Their lack of
 popularity could result from poor quality software applications, as
-Thomas Pietrzak suggests. Given Jansson study {[}84{]} mouses are not
+Thomas Pietrzak suggests. Given Jansson study \cite{jansson2005obtaining} mouses are not
 compatible with navigation tasks for visually impaired people.
 
-Other displays, like the Brailliant from Humanware {[}link needed{]},
+\begin{figure}[!ht]
+	\begin{minipage}[c]{.32\linewidth}
+		\centering
+		\includegraphics[width=3cm]{figures/vtplayer.png}
+		\caption{VTPlalyer}
+		\end{minipage} \hfill
+	\begin{minipage}[c]{.32\linewidth}
+			\centering
+		\includegraphics[width=3cm]{figures/tactos.png}
+		\caption{Tactos}
+	\end{minipage}
+	\begin{minipage}[c]{.32\linewidth}
+		\centering
+		\includegraphics[width=3cm]{figures/tactiball.png}
+		\caption{Tactiball}
+	\end{minipage}
+\end{figure}
+
+Other displays, like the Brailliant from Humanware \cite{HumanWare},
 offer a full range of actuators forming braille letters, but remain
 fairly expensive.
 
 HTP, a precursor of the HaptiQ, deserves particular attention. One of my
 tutors -- Miguel Nacenta, has been involved in the design of this
-input/output device with a single actuator in the center {[}ref
-needed{]}. The purpose of the HTP is to explore other possible
-interactions with tabletops like their further work has suggested {[}ref
-needed{]}. It renders unconventional outputs like friction and softness
+input/output device with a single actuator in the center \cite{marquardt2009haptic}. The purpose of the HTP is to explore other possible
+interactions with tabletops like their further work has suggested \cite{ledo2012haptictouch}. It renders unconventional outputs like friction and softness ~\ref{fig:puck-d}
 which can be integrated in various applications. Although innovative,
-its usage is supported by visual elements and has not been though threw
+its usage is supported by visual elements ~\ref{fig:puck-visual} and has not been though threw
 for visually impaired people.
+
+\begin{figure}[!ht]
+	\begin{minipage}[c]{.45\linewidth}
+		\centering
+		\includegraphics[width=5cm]{figures/puck-d.png}
+		\caption{The Haptic Table Top Puck innovative outputs \label{fig:puck-d}}
+	\end{minipage}
+	\begin{minipage}[c]{.45\linewidth}
+		\centering
+		\includegraphics[width=3cm]{figures/puck-image.png}
+		\caption{The Haptic Tabel Top Puck has one center actuator}
+	\end{minipage}
+\end{figure}
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[height=5cm]{figures/puck-visual.png}
+	\caption{The Haptic Table Top Puck interacts well with tabletops, but its usage requires visual support \label{fig:puck-visual}}
+\end{figure}
+
+% \caption{Bake options with CakePHP\label{fig:cakePHP-option}}
+% figure ~\ref{fig:cakePHP-option}.
 
 \subsection{Vibrations}\label{vibrations}
 
 Some devices use vibrations in oder to provide feedbacks. Small
 vibro-motors can be attached to a glove which makes the device adapted
-to a hand like the Cybertouch {[}ref needed{]}. They could also be
+to a hand like the Cybertouch glove \cite{astrauskas2008cybertouch}. They could also be
 integrated on a small surface imitating a matrix of actuators like the
-Optacon {[}ref needed{]}.
+Optacon \cite{linvill1966direct}.
 
 Vibrations can be used in a matrix of thin vertical panels trigerring a
-feeling of cavity or bumps when a hand is set on it as in STReSS {[}ref
-needed{]}.
+feeling of cavity or bumps when a hand is set on it as in STReSS and its second version STReSS 2 \cite{wang2006compact}.
 
-Electrovibration is used in the TeslaTouch and Revel systems {[}ref
-needed, ref needed{]}; it is imitating the sensation of friction and is
-therefore only perceptable when the fingers are in motion.
+Electrovibration is used in the TeslaTouch and Revel systems \cite{bau2010teslatouch, bau2012revel}; it is imitating the sensation of friction and is therefore only perceptable when the fingers are in motion which would be incompatible with our task analysis done previously.
+
+\begin{figure}[!ht]
+	\begin{minipage}[c]{.45\linewidth}
+		\centering
+		\includegraphics[height=5cm]{figures/cybertouch.png}
+	\caption{The cybertouch glove}
+	\end{minipage}
+	\begin{minipage}[c]{.45\linewidth}
+		\centering
+		\includegraphics[width=5cm]{figures/stress.png}
+		\caption{Stress uses vertical panels to vibrate in order to create a sensation of bumps}
+	\end{minipage}
+\end{figure}
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=8cm]{figures/teslatouch.png}
+	\caption{The TeslaTouch}
+\end{figure}
+
 
 \subsection{Forcefeedback}\label{forcefeedback}
 
 Forcefeedback has known a famous entry in the gaming field with Joystick
 and Wheels. But their application goes far beyond that. One of the most
-recurrent names is the PHANToM {[}ref needed{]} that forces the point in
+recurrent names is the PHANToM \cite{massie1994phantom} that forces the point in
 certain directions. Forcefeedback comes in a variety of techniques in
 order to push a single point into a certain direction (articulated arm,
 pantographes, or pneumatics).
 
 Having a single point of contact does not allow users to follow lines
-easily orto understand shapes {[}ref needed{]}. This make Forcefeedback
+easily orto understand shapes \cite{yu2001haptic}. This make Forcefeedback
 unsuitable for our project.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[height=4cm]{figures/phantom.png}
+	\caption{PHANToM makes a strange sensation when the user tries to go through a virtual object}
+\end{figure}
 
 \subsection{Air}\label{air}
 
 Feedbacks can be perceived via air motion. It triggers the same signals
-as with tactile motion thanks to the variety of sensitivy receptors
-{[}88, 101{]}. AIREAL {[}19{]} makes this approach possible and uses a
+as with tactile motion thanks to the variety of sensitivy receptors \cite{klatzky1999zl}. AIREAL \cite{sodhi2013aireal} makes this approach possible and uses a
 motion detector camera as input. Using highly pressured air waves allows
 long distance interaction (10m). Besides, it is scalable and affordable.
 Even though they offer a wide range of angles from which the air is
 pushed, the lack of resolution limits its usage tremendously. Plus,
 AIREAL is presented as an interaction more suited to enhance user
-experience than an input output system than for exploration.
+experience than an input output system for exploration.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[height=5cm]{figures/aireal.png}
+	\caption{AIREAL creates an air vortex perceptible}
+\end{figure}
 
 \subsection{No hands involved}\label{no-hands-involved}
 
-(FIGURE: Homonculus sensoriel)
 
-If we were to represent the human body by its touch sensitivy, we would
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[height=5cm]{figures/sensory_homunculus.png}
+	\caption{The Sensory Homunculus from the Natural History Museum of London \cite{homonculus}}
+\end{figure}
+
+If we were to represent the human body by its touch sensitivity, we would
 end up with a weak figurine with enormous hands, lips and tongue. This
 is maybe why bolder interactions are exploiting the latter with the
-Tongue Display Unit {[}9{]}. This display places a seven by seven grid
+Tongue Display Unit \cite{bach1998form}. This display places a seven by seven grid
 filled with electrodes on the tongue and can be used in a
 no-hands-involved scenario: as for instance a working surgeon. Others
-would use the brow with the Forhead Retina System {[}ref needed{]}.
+would use the brow with the Forhead Retina System \cite{kajimoto2006forehead}.
 
 Although intriguing, both of these displays allow limited interaction
 and are suited for very particular scenarios.
 
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[height=5cm]{figures/tongue_display_unit.png}
+	\caption{The Tongue Display Unit}
+\end{figure}
+
 \section{Previous versions}\label{previous-versions}
 
-FIGURE haptiQ evolution, tactons
+\begin{figure}[!ht]
+	\begin{minipage}[c]{.45\linewidth}
+		\centering
+		\includegraphics[width=5cm]{figures/simone_haptiq_4.png}
+		\caption{The HaptiQ with four actuators}
+	\end{minipage}
+	\begin{minipage}[c]{.45\linewidth}
+		\centering
+		\includegraphics[height=5cm]{figures/simone_haptiq_8.png}
+		\caption{The HaptiQ with eight actuators}
+	\end{minipage}
+\end{figure}
 
 In 2014, Constan Simone has worked on a first version of HaptiQ at the
 University of St Andrews. His development process was focused on the
@@ -234,8 +341,13 @@ maintaining all the servomotors.
 His work on a background research narrowed the disadvantages of other
 haptics solutions. He has also implied that a vector based mechanical
 actuator such as the HaptiQ is unique. His ideas on possible
-applications in order to help math signal representation (like in Figure
-?) are highly valuable.
+applications in order to help math signal representation as in Figure ~\ref{fig:simone-math} are highly valuable.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[height=5cm]{figures/simone_maths.png}
+	\caption{A maths application that turns simple equations into graph\label{fig:simone-math}}
+\end{figure}
 
 Even though his design on the caps does not appear in his report, we
 have to give him credit for it. His work on tactons seems promising;
@@ -256,12 +368,12 @@ build. This results in high costs overall and is often dedicated to a
 specific usage. If our goal is to provide a solution for VIP around the
 world, then we should take into account other aspects such as making it
 easily replicable and allowing applications to be build on top of the
-key interactions like the Haptic Puck Tabletop and the Phantom did. But
-this goal requires various skills and a careful design.
+key interactions like the Haptic Puck Tabletop and the Phantom did and just like Simone started. But
+this goal requires various skills and careful designs.
 
 Many alternatives exist, but the same issue remains: we are too focused
-on data represenation than on data meaning. It might be more relevant to
-focus on the general trends than on the exact measurements. Let us
+on data representation than on data meaning. It might be more relevant to
+focus on the general trends than on the exact measurements \cite{roberts2007we}. Let us
 remember that it is really hard to learn the simple concept of a squared
 angle when one would be deprived of sight. The challenge is there:
 trying to give a natural interaction for the strategies involved in
@@ -269,8 +381,7 @@ exploration and facilitate learning. A way of solving it is to take a
 step back in the representation of information: we are not interested in
 the value of a perticular pixel but its meaning, its purpose. Is it a
 part of an edge? Is it filling a cue point? Or is it just random noise?
-These problems can be solved by giving meaning a perticular point; this
+These problems can be solved by giving meaning to a perticular point; this
 is why we are focusing only on graphs. They are a scalable and precise
 representation of the key information. Understanding graphs is mastering
-a way to easily acquire conceptual and spatial information. (ref:
-01\_\_)
+a way to easily acquire conceptual and spatial information.
